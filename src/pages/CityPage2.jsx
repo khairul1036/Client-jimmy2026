@@ -209,6 +209,53 @@ export default function CityPage2() {
           font-weight: 500;
         }
 
+        .radex-hero-ctas {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+
+        .btn-gold {
+          background-color: var(--gold);
+          color: var(--white);
+          font-family: var(--font-heading), sans-serif;
+          font-weight: 700;
+          padding: 14px 28px;
+          border-radius: 4px;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: background-color 0.2s ease, transform 0.2s ease;
+          border: none;
+          cursor: pointer;
+        }
+
+        .btn-gold:hover {
+          background-color: var(--gold-dark);
+          color: var(--white);
+        }
+
+        .btn-outline-white {
+          background-color: transparent;
+          color: var(--white);
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          font-family: var(--font-heading), sans-serif;
+          font-weight: 700;
+          padding: 14px 28px;
+          border-radius: 4px;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: all 0.2s ease;
+        }
+
+        .btn-outline-white:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          border-color: var(--white);
+        }
+
         .radex-city-usp-list {
           display: flex;
           flex-direction: column;
