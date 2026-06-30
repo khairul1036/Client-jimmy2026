@@ -53,17 +53,84 @@ export function BrowserRouter({ children, initialPath }) {
   );
 }
 
+export const RouteParamsContext = createContext({});
+
+export function useParams() {
+  return useContext(RouteParamsContext);
+}
+
+function matchPath(routePath, currentPath) {
+  if (!routePath) return null;
+  const normRoute = routePath.endsWith('/') && routePath !== '/' ? routePath.slice(0, -1) : routePath;
+  const normCurrent = currentPath.endsWith('/') && currentPath !== '/' ? currentPath.slice(0, -1) : currentPath;
+
+  if (normRoute === normCurrent) {
+    return {};
+  }
+
+  const routeSegments = normRoute.split('/').filter(Boolean);
+  const currentSegments = normCurrent.split('/').filter(Boolean);
+
+  if (routeSegments.length !== currentSegments.length) {
+    return null;
+  }
+
+  const params = {};
+  for (let i = 0; i < routeSegments.length; i++) {
+    const rSeg = routeSegments[i];
+    const cSeg = currentSegments[i];
+
+    if (rSeg.startsWith(':')) {
+      params[rSeg.slice(1)] = decodeURIComponent(cSeg);
+    } else if (rSeg.toLowerCase() !== cSeg.toLowerCase()) {
+      return null;
+    }
+  }
+
+  return params;
+}
+
 export function Routes({ children, fallback }) {
   const { path } = useContext(RouterContext);
-  const items = Array.isArray(children) ? children : [children];
-  const match = items.find((child) => child && child.props.path === path);
-  if (match) return match;
+  const items = Array.isArray(children) ? children.flat() : [children];
+  
+  let match = null;
+  let params = {};
+
+  for (const child of items) {
+    if (!child) continue;
+    const routePath = child.props.path;
+    if (routePath === undefined) continue;
+
+    const matchedParams = matchPath(routePath, path);
+    if (matchedParams !== null) {
+      match = child;
+      params = matchedParams;
+      break;
+    }
+  }
+
+  if (match) {
+    return (
+      <RouteParamsContext.Provider value={params}>
+        {match}
+      </RouteParamsContext.Provider>
+    );
+  }
   return fallback || null;
 }
 
 export function Route({ path: routePath, element }) {
   const { path } = useContext(RouterContext);
-  return path === routePath ? element : null;
+  const params = matchPath(routePath, path);
+  if (params !== null) {
+    return (
+      <RouteParamsContext.Provider value={params}>
+        {element}
+      </RouteParamsContext.Provider>
+    );
+  }
+  return null;
 }
 
 export function Redirect({ to }) {

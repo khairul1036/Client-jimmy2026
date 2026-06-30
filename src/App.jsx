@@ -35,6 +35,9 @@ import UeberUns from './pages/UeberUns';
 import Karriere from './pages/Karriere';
 import SanierungskostenRechnerPage from './pages/SanierungskostenRechnerPage';
 
+import EinsatzgebieteHub2 from './pages/EinsatzgebieteHub2';
+import CityPage2 from './pages/CityPage2';
+
 function ScrollAndAnimationManager() {
   const location = useLocation();
 
@@ -98,6 +101,7 @@ export default function App({ location }) {
           <Route path="/" element={<Home />} />
           <Route path="/sanierung-rhein-main" element={<SanierungHub />} />
           <Route path="/leistungen" element={<LeistungenHub />} />
+
           <Route path="/einsatzgebiete-rhein-main" element={<EinsatzgebieteHub />} />
           <Route path="/sanierung-frankfurt-am-main" element={<CityPage cityId="frankfurt" />} />
           <Route path="/haus-wohnung-bad-modernisieren-darmstadt" element={<CityPage cityId="darmstadt" />} />
@@ -107,6 +111,11 @@ export default function App({ location }) {
           <Route path="/sanierung-mainz" element={<CityPage cityId="mainz" />} />
           <Route path="/sanierung-aschaffenburg" element={<CityPage cityId="aschaffenburg" />} />
           <Route path="/sanierung-roedermark" element={<CityPage cityId="roedermark" />} />
+
+          {/* new EinsatzgebieteHub2 page start */}
+          <Route path="/einsatzgebiete" element={<EinsatzgebieteHub2 />} />
+          {/* new EinsatzgebieteHub2 page end */}
+
           <Route path="/badsanierung-rhein-main" element={<BathroomRenovation />} />
           <Route path="/sanierung/wohnungssanierung" element={<ApartmentRenovation />} />
           <Route path="/sanierung/haussanierung" element={<HouseRenovation />} />
@@ -129,6 +138,7 @@ export default function App({ location }) {
           <Route path="/altbausanierung-kosten" element={<SanierungskostenRechnerPage defaultType="altbau" metaType="altbau" />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="/:slug" element={<CityPage2 />} />
         </Routes>
         <Footer />
         <MobileStickyCTA />

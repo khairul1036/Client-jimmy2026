@@ -5,7 +5,8 @@
 // Run after `vite build` (client) and `vite build --ssr` (server entry).
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { allCitiesList } from '../src/data/citiesData.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
@@ -35,11 +36,22 @@ const cityMeta = Object.fromEntries(
   ])
 );
 
+const newCityMeta = Object.fromEntries(
+  allCitiesList.map(c => [
+    `/${c.slug}`,
+    {
+      title: `Sanierung ${c.name} | Bad, Wohnung & Haus modernisieren | Radex`,
+      description: `Sanierung & Badsanierung in ${c.name} aus einer Hand: Wohnungs-, Haus- & Altbausanierung, Heizung, Elektro & mehr vom SHK-Meisterbetrieb. Festpreis. Jetzt Beratung sichern!`
+    }
+  ])
+);
+
 const routes = {
   '/': { title: 'Radex Objektmanagement | Sanierung & Badsanierung im Rhein-Main-Gebiet', description: 'Sanierung, Badsanierung & Modernisierung im Rhein-Main-Gebiet aus einer Hand. Zugelassener SHK-Meisterbetrieb & Generalunternehmer aus Rödermark. Jetzt kostenlose Beratung sichern!' },
   '/sanierung-rhein-main': { title: 'Sanierung Rhein-Main | Wohnung, Haus & Altbau modernisieren | Radex', description: 'Sanierung im Rhein-Main-Gebiet: Wohnungs-, Haus- & Altbausanierung, Komplettsanierung und Generalunternehmer aus einer Hand. Festpreis & feste Termine. Jetzt anfragen!' },
   '/leistungen': { title: 'Leistungen | Sanierung & Modernisierung im Rhein-Main-Gebiet | Radex', description: 'Alle Leistungen von Radex im Rhein-Main-Gebiet: Komplettsanierung, Heizung & Sanitär, Elektrotechnik, Innenausbau, Energie & Förderung, Schimmel & Asbest, Gewerbe.' },
   '/einsatzgebiete-rhein-main': { title: 'Einsatzgebiete | Sanierung im Rhein-Main-Gebiet | Radex', description: 'Radex saniert in über 60 Städten im Rhein-Main-Gebiet: Frankfurt, Offenbach, Darmstadt, Wiesbaden, Mainz, Hanau, Aschaffenburg, Rödermark u. v. m. Jetzt vor Ort beraten lassen!' },
+  '/einsatzgebiete': { title: 'Einsatzgebiete | Radex Objektmanagement GmbH', description: 'Radex realisiert Sanierungs- und Modernisierungsprojekte im gesamten Rhein-Main-Gebiet – mit Standort in Rödermark/Ober-Roden und kurzen Wegen zu Kunden, Baustellen und Fachpartnern.' },
   '/badsanierung-rhein-main': { title: 'Badsanierung Rhein-Main | Komplettbad zum Festpreis | Radex', description: 'Badsanierung im Rhein-Main-Gebiet vom SHK-Meisterbetrieb: Komplettbäder, Badmodernisierung & barrierefreie Bäder aus einer Hand. Jetzt Festpreis-Beratung sichern!' },
   '/sanierung/wohnungssanierung': { title: 'Wohnungssanierung Rhein-Main | Festpreis & aus einer Hand | Radex', description: 'Wohnungssanierung im Rhein-Main-Gebiet: Teilsanierung, Kernsanierung & Modernisierung vom Generalunternehmer. Termingerecht, staubarm, zum Festpreis. Jetzt anfragen!' },
   '/sanierung/haussanierung': { title: 'Haussanierung Rhein-Main | Modernisierung aus einer Hand | Radex', description: 'Haussanierung im Rhein-Main-Gebiet: energetische Modernisierung, Grundrissoptimierung, Dach & Fassade vom Generalunternehmer. Festpreis & feste Termine. Jetzt anfragen!' },
@@ -62,7 +74,8 @@ const routes = {
   '/altbausanierung-kosten': { title: 'Altbausanierung Kosten | Sanierungskosten Rechner | Radex', description: 'Altbausanierung Kosten online berechnen: kostenlose Orientierung für Sanierung, Kernsanierung und Modernisierung im Rhein-Main-Gebiet.' },
   '/impressum': { title: 'Impressum | Radex Objektmanagement GmbH', description: 'Impressum der Radex Objektmanagement GmbH, Odenwaldstraße 61, 63322 Rödermark.' },
   '/datenschutz': { title: 'Datenschutz | Radex Objektmanagement GmbH', description: 'Datenschutzerklärung der Radex Objektmanagement GmbH gemäß DSGVO.' },
-  ...cityMeta
+  ...cityMeta,
+  ...newCityMeta
 };
 
 function escapeAttr(s) {
@@ -99,7 +112,7 @@ function applyHead(html, route, meta) {
 
 async function main() {
   const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
-  const { render } = await import(path.join(distDir, 'server', 'entry-server.js'));
+  const { render } = await import(pathToFileURL(path.join(distDir, 'server', 'entry-server.js')).href);
 
   let count = 0;
   for (const [route, meta] of Object.entries(routes)) {
