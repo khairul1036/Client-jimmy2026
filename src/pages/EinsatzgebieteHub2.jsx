@@ -205,7 +205,6 @@ export default function EinsatzgebieteHub2() {
           color: var(--text);
           display: flex;
           justify-content: center;
-          border-bottom: 1px solid var(--border);
         }
         
         .radex-einsatz-hero-inner {
@@ -396,8 +395,6 @@ export default function EinsatzgebieteHub2() {
           background-color: var(--bg-light);
           padding: 80px 24px;
           text-align: center;
-          border-top: 1px solid var(--border);
-          border-bottom: 1px solid var(--border);
         }
 
         .radex-cities-header {
@@ -541,8 +538,6 @@ export default function EinsatzgebieteHub2() {
         .radex-emergency-section {
           background-color: var(--bg-section);
           padding: 80px 24px;
-          border-top: 1px solid var(--border);
-          border-bottom: 1px solid var(--border);
         }
         
         .radex-emergency-inner {
@@ -661,7 +656,6 @@ export default function EinsatzgebieteHub2() {
           padding: 80px 24px;
           display: flex;
           justify-content: center;
-          border-top: 1px solid var(--border);
           border-bottom: 4px solid var(--gold);
         }
         

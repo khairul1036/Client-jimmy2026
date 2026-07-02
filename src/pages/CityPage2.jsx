@@ -163,11 +163,11 @@ export default function CityPage2() {
         /* Hero Split Section */
         .radex-city-hero {
           position: relative;
-          background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('${city.heroImg}');
+          background-image: linear-gradient(rgba(250, 251, 253, 0.88), rgba(250, 251, 253, 0.92)), url('${city.heroImg}');
           background-size: cover;
           background-position: center;
           padding: clamp(80px, 10vw, 120px) 24px;
-          color: var(--white);
+          color: var(--text);
           display: flex;
           justify-content: center;
         }
@@ -195,7 +195,7 @@ export default function CityPage2() {
           margin: 0 0 16px 0;
           letter-spacing: -0.5px;
           line-height: 1.2;
-          color: var(--white);
+          color: var(--navy);
         }
 
         .radex-city-hero-content h1 span {
@@ -204,7 +204,7 @@ export default function CityPage2() {
 
         .radex-city-hero-content p.subtitle {
           font-size: clamp(15px, 2vw, 18px);
-          color: rgba(255, 255, 255, 0.85);
+          color: var(--text-light);
           margin: 0 0 28px 0;
           font-weight: 500;
         }
@@ -236,10 +236,10 @@ export default function CityPage2() {
           color: var(--white);
         }
 
-        .btn-outline-white {
+        .btn-outline-navy {
           background-color: transparent;
-          color: var(--white);
-          border: 1px solid rgba(255, 255, 255, 0.4);
+          color: var(--navy);
+          border: 2px solid var(--navy);
           font-family: var(--font-heading), sans-serif;
           font-weight: 700;
           padding: 14px 28px;
@@ -251,9 +251,10 @@ export default function CityPage2() {
           transition: all 0.2s ease;
         }
 
-        .btn-outline-white:hover {
-          background-color: rgba(255, 255, 255, 0.1);
-          border-color: var(--white);
+        .btn-outline-navy:hover {
+          background-color: var(--navy);
+          color: var(--white);
+          transform: translateY(-2px);
         }
 
         .radex-city-usp-list {
@@ -284,30 +285,30 @@ export default function CityPage2() {
         .radex-city-usp-title {
           font-weight: 600;
           font-size: 15px;
-          color: #ffffff;
+          color: var(--navy);
         }
 
         .radex-city-usp-desc {
           font-size: 14px;
-          color: #9ca3af;
+          color: var(--text-light);
           margin-left: 4px;
         }
 
         /* Hero Badge Overlay */
         .radex-city-hero-badge {
-          background-color: rgba(var(--navy-rgb), 0.95);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background-color: var(--white);
+          border: 1px solid var(--border);
           border-left: 4px solid var(--gold);
           padding: 24px;
           border-radius: 0 8px 8px 0;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+          box-shadow: var(--shadow-md);
         }
 
         .radex-city-hero-badge h3 {
           font-family: var(--font-heading), sans-serif;
           font-size: 18px;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--navy);
           margin: 0 0 8px 0;
           display: flex;
           align-items: center;
@@ -316,14 +317,13 @@ export default function CityPage2() {
 
         .radex-city-hero-badge p {
           font-size: 14px;
-          color: #9ca3af;
+          color: var(--text-light);
           margin: 0;
         }
 
         /* Service Nav list */
         .radex-city-nav-section {
           background-color: var(--bg-light);
-          border-bottom: 1px solid var(--border);
           padding: 24px 0;
         }
 
@@ -484,8 +484,6 @@ export default function CityPage2() {
         /* Ablauf Timeline Section */
         .radex-city-ablauf-section {
           background-color: var(--bg-section);
-          border-top: 1px solid var(--border);
-          border-bottom: 1px solid var(--border);
           padding: 80px 24px;
         }
 
@@ -647,8 +645,6 @@ export default function CityPage2() {
         /* Accordion FAQ */
         .radex-city-faq-section {
           background-color: var(--bg-section);
-          border-top: 1px solid var(--border);
-          border-bottom: 1px solid var(--border);
           padding: 80px 24px;
         }
 
@@ -737,8 +733,8 @@ export default function CityPage2() {
 
         /* Contact Section */
         .radex-city-contact-section {
-          background-color: var(--navy-dark);
-          color: #ffffff;
+          background-color: var(--bg-light);
+          color: var(--text);
           padding: 80px 24px;
           display: flex;
           justify-content: center;
@@ -765,20 +761,20 @@ export default function CityPage2() {
           font-size: clamp(28px, 4.5vw, 36px);
           font-weight: 800;
           margin: 0 0 20px 0;
-          color: #ffffff;
+          color: var(--navy);
           letter-spacing: -0.5px;
         }
 
         .radex-city-contact-info p {
           font-size: 16px;
-          color: rgba(255, 255, 255, 0.7);
+          color: var(--text-light);
           margin-bottom: 32px;
           line-height: 1.7;
         }
 
         .radex-city-cta-box {
-          background-color: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background-color: rgba(249, 115, 22, 0.04);
+          border: 1px solid rgba(249, 115, 22, 0.15);
           border-left: 4px solid var(--gold);
           padding: 24px;
           border-radius: 0 8px 8px 0;
@@ -788,13 +784,13 @@ export default function CityPage2() {
         .radex-city-cta-box h3 {
           font-size: 18px;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--navy);
           margin: 0 0 6px 0;
         }
 
         .radex-city-cta-box p {
           font-size: 14px;
-          color: rgba(255, 255, 255, 0.6);
+          color: var(--text-light);
           margin: 0;
         }
 
@@ -808,7 +804,7 @@ export default function CityPage2() {
           display: inline-flex;
           align-items: center;
           gap: 12px;
-          color: #ffffff;
+          color: var(--text);
           text-decoration: none;
           font-weight: 600;
           font-size: 16px;
@@ -821,11 +817,11 @@ export default function CityPage2() {
 
         /* Lead Form */
         .radex-city-form-panel {
-          background-color: var(--navy-dark);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background-color: var(--white);
+          border: 1px solid var(--border);
           padding: 40px;
           border-radius: 12px;
-          box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         @media (max-width: 575px) {
@@ -842,7 +838,7 @@ export default function CityPage2() {
           font-size: 22px;
           font-weight: 800;
           margin: 0 0 24px 0;
-          color: #ffffff;
+          color: var(--navy);
         }
 
         .radex-city-form-grid {
@@ -867,15 +863,15 @@ export default function CityPage2() {
         .radex-city-form-field label {
           font-size: 12px;
           font-weight: 600;
-          color: #9ca3af;
+          color: var(--text-light);
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
 
         .radex-city-input {
-          background-color: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          color: #ffffff;
+          background-color: var(--bg-light);
+          border: 1px solid var(--border);
+          color: var(--text);
           padding: 12px 16px;
           border-radius: 4px;
           font-size: 15px;
@@ -898,15 +894,15 @@ export default function CityPage2() {
         .radex-city-form-full label {
           font-size: 12px;
           font-weight: 600;
-          color: #9ca3af;
+          color: var(--text-light);
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
 
         .radex-city-textarea {
-          background-color: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          color: #ffffff;
+          background-color: var(--bg-light);
+          border: 1px solid var(--border);
+          color: var(--text);
           padding: 12px 16px;
           border-radius: 4px;
           font-size: 15px;
@@ -937,7 +933,7 @@ export default function CityPage2() {
 
         .radex-city-checkbox-label {
           font-size: 13px;
-          color: #9ca3af;
+          color: var(--text-light);
           line-height: 1.4;
           cursor: pointer;
         }
@@ -977,13 +973,13 @@ export default function CityPage2() {
         .success-box h4 {
           font-size: 20px;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--navy);
           margin: 0 0 10px 0;
         }
 
         .success-box p {
           font-size: 15px;
-          color: #9ca3af;
+          color: var(--text-light);
           margin: 0;
           line-height: 1.6;
         }
@@ -1012,7 +1008,7 @@ export default function CityPage2() {
 
             <div className="radex-hero-ctas">
               <a href="#kontakt-formular" className="btn-gold">Beratung anfragen</a>
-              <a href="tel:+496074960620" className="btn-outline-white">
+              <a href="tel:+496074960620" className="btn-outline-navy">
                 <Phone size={18} /> 06074 960620
               </a>
             </div>
