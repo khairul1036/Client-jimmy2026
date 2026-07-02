@@ -74,6 +74,7 @@ const routes = {
   '/altbausanierung-kosten': { title: 'Altbausanierung Kosten | Sanierungskosten Rechner | Radex', description: 'Altbausanierung Kosten online berechnen: kostenlose Orientierung für Sanierung, Kernsanierung und Modernisierung im Rhein-Main-Gebiet.' },
   '/impressum': { title: 'Impressum | Radex Objektmanagement GmbH', description: 'Impressum der Radex Objektmanagement GmbH, Odenwaldstraße 61, 63322 Rödermark.' },
   '/datenschutz': { title: 'Datenschutz | Radex Objektmanagement GmbH', description: 'Datenschutzerklärung der Radex Objektmanagement GmbH gemäß DSGVO.' },
+  '/ratgeber': { title: 'Ratgeber – Sanierung & Modernisierung Rhein-Main | Radex', description: 'Ratgeber zu Sanierung und Modernisierung im Rhein-Main-Gebiet – Tipps zu Badsanierung, energetischer Sanierung, Heizung & Sanitär von Radex Objektmanagement.' },
   ...cityMeta,
   ...newCityMeta
 };

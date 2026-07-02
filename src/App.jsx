@@ -34,6 +34,7 @@ import Datenschutz from './pages/Datenschutz';
 import UeberUns from './pages/UeberUns';
 import Karriere from './pages/Karriere';
 import SanierungskostenRechnerPage from './pages/SanierungskostenRechnerPage';
+import Ratgeber from './pages/Ratgeber';
 
 import EinsatzgebieteHub2 from './pages/EinsatzgebieteHub2';
 import CityPage2 from './pages/CityPage2';
@@ -138,6 +139,7 @@ export default function App({ location }) {
           <Route path="/altbausanierung-kosten" element={<SanierungskostenRechnerPage defaultType="altbau" metaType="altbau" />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="/ratgeber" element={<Ratgeber />} />
           <Route path="/:slug" element={<CityPage2 />} />
         </Routes>
         <Footer />
