@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MapPin, Phone, Mail, ChevronRight, Check } from 'lucide-react';
+import { MapPin, Phone, Mail, ChevronRight, Check, Wrench, Clock, AlertTriangle } from 'lucide-react';
 import { Link } from '../router';
 import useSeo from '../useSeo';
 import { mainCities } from '../data/citiesData';
@@ -197,14 +197,15 @@ export default function EinsatzgebieteHub2() {
         /* Hero Section */
         .radex-einsatz-hero {
           position: relative;
-          background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1600');
+          background-image: linear-gradient(rgba(250, 251, 253, 0.88), rgba(250, 251, 253, 0.92)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1600');
           background-size: cover;
           background-position: center;
           padding: clamp(80px, 10vw, 120px) 24px;
           text-align: left;
-          color: var(--white);
+          color: var(--text);
           display: flex;
           justify-content: center;
+          border-bottom: 1px solid var(--border);
         }
         
         .radex-einsatz-hero-inner {
@@ -229,14 +230,14 @@ export default function EinsatzgebieteHub2() {
           margin: 0 0 20px 0;
           letter-spacing: -0.5px;
           line-height: 1.2;
-          color: var(--white);
+          color: var(--navy);
         }
         
         .radex-einsatz-hero p {
           font-size: clamp(16px, 2vw, 18px);
           max-width: 800px;
           margin: 0 0 32px 0;
-          color: rgba(255, 255, 255, 0.85);
+          color: var(--text-light);
           line-height: 1.7;
         }
         
@@ -267,9 +268,9 @@ export default function EinsatzgebieteHub2() {
           transform: translateY(-2px);
         }
         
-        .btn-outline-white {
+        .btn-outline-navy {
           background-color: transparent;
-          color: #ffffff;
+          color: var(--navy);
           font-family: var(--font-heading), sans-serif;
           font-weight: 700;
           padding: 14px 28px;
@@ -279,12 +280,12 @@ export default function EinsatzgebieteHub2() {
           align-items: center;
           gap: 8px;
           transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-          border: 2px solid #ffffff;
+          border: 2px solid var(--navy);
         }
         
-        .btn-outline-white:hover {
-          background-color: #ffffff;
-          color: var(--navy-dark);
+        .btn-outline-navy:hover {
+          background-color: var(--navy);
+          color: var(--white);
           transform: translateY(-2px);
         }
 
@@ -536,16 +537,134 @@ export default function EinsatzgebieteHub2() {
           transform: translateX(4px);
         }
 
+        /* Emergency Section */
+        .radex-emergency-section {
+          background-color: var(--bg-section);
+          padding: 80px 24px;
+          border-top: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+        }
+        
+        .radex-emergency-inner {
+          max-width: var(--container-width);
+          margin: 0 auto;
+        }
+        
+        .radex-emergency-header {
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto 50px auto;
+        }
+        
+        .radex-emergency-header h2 {
+          font-family: var(--font-heading), sans-serif;
+          font-size: clamp(28px, 4vw, 36px);
+          font-weight: 800;
+          color: var(--navy);
+          margin: 0 0 16px 0;
+          letter-spacing: -0.5px;
+        }
+        
+        .radex-emergency-header p {
+          font-size: 16px;
+          color: var(--text-light);
+          margin: 0;
+        }
+        
+        .radex-emergency-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+        }
+        
+        @media (max-width: 991px) {
+          .radex-emergency-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+        }
+        
+        .emergency-card {
+          background: var(--white);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          padding: 32px;
+          display: flex;
+          flex-direction: column;
+          box-shadow: var(--shadow-sm);
+          transition: var(--transition);
+        }
+        
+        .emergency-card:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-md);
+        }
+        
+        .emergency-icon-box {
+          position: relative;
+          color: var(--gold);
+          margin-bottom: 24px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+        }
+        
+        .emergency-badge {
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          background-color: rgba(249, 115, 22, 0.1);
+          color: var(--gold);
+          padding: 4px 10px;
+          border-radius: 20px;
+        }
+        
+        .emergency-badge.bg-orange {
+          background-color: rgba(234, 88, 12, 0.1);
+          color: #EA580C;
+        }
+        
+        .emergency-badge.bg-red {
+          background-color: rgba(239, 68, 68, 0.1);
+          color: #EF4444;
+        }
+        
+        .emergency-card h3 {
+          font-family: var(--font-heading), sans-serif;
+          font-size: 20px;
+          font-weight: 800;
+          color: var(--navy);
+          margin: 0 0 12px 0;
+        }
+        
+        .emergency-card p {
+          font-size: 15px;
+          color: var(--text-light);
+          margin: 0 0 24px 0;
+          line-height: 1.6;
+          flex-grow: 1;
+        }
+        
+        .emergency-link {
+          margin-top: auto;
+          text-align: center;
+          justify-content: center;
+          width: 100%;
+        }
+
         /* Contact Section */
         .radex-contact-section {
-          background-color: var(--navy-dark);
-          color: var(--white);
+          background-color: var(--bg-light);
+          color: var(--text);
           padding: 80px 24px;
           display: flex;
           justify-content: center;
+          border-top: 1px solid var(--border);
           border-bottom: 4px solid var(--gold);
         }
-
+        
         .radex-contact-inner {
           max-width: var(--container-width);
           width: 100%;
@@ -553,81 +672,81 @@ export default function EinsatzgebieteHub2() {
           grid-template-columns: 1fr 1.2fr;
           gap: 60px;
         }
-
+        
         @media (max-width: 991px) {
           .radex-contact-inner {
             grid-template-columns: 1fr;
             gap: 40px;
           }
         }
-
+        
         .radex-contact-info-panel h2 {
           font-family: var(--font-heading), sans-serif;
           font-size: clamp(28px, 4.5vw, 36px);
           font-weight: 800;
           margin: 0 0 20px 0;
-          color: var(--white);
+          color: var(--navy);
           letter-spacing: -0.5px;
         }
-
+        
         .radex-contact-info-panel p {
           font-size: 16px;
-          color: rgba(255, 255, 255, 0.7);
+          color: var(--text-light);
           margin-bottom: 32px;
           line-height: 1.7;
         }
-
+        
         .radex-cta-card-highlight {
-          background-color: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background-color: rgba(249, 115, 22, 0.04);
+          border: 1px solid rgba(249, 115, 22, 0.15);
           border-left: 4px solid var(--gold);
           padding: 24px;
           border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
           margin-bottom: 32px;
         }
-
+        
         .radex-cta-card-highlight h3 {
           font-size: 18px;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--navy);
           margin: 0 0 6px 0;
         }
-
+        
         .radex-cta-card-highlight p {
           font-size: 14px;
-          color: #9ca3af;
+          color: var(--text-light);
           margin: 0;
         }
-
+        
         .radex-contact-links {
           display: flex;
           flex-direction: column;
           gap: 16px;
         }
-
+        
         .radex-contact-link-item {
           display: inline-flex;
           align-items: center;
           gap: 12px;
-          color: #ffffff;
+          color: var(--text);
           text-decoration: none;
           font-weight: 600;
           font-size: 16px;
           transition: color 0.2s ease;
         }
-
+        
         .radex-contact-link-item:hover {
           color: var(--gold);
         }
-
+        
         .radex-form-panel {
-          background-color: var(--navy-dark);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background-color: var(--white);
+          border: 1px solid var(--border);
           padding: 40px;
           border-radius: 12px;
-          box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
-
+        
         @media (max-width: 575px) {
           .radex-contact-section {
             padding: 50px 16px;
@@ -636,77 +755,77 @@ export default function EinsatzgebieteHub2() {
             padding: 24px 16px;
           }
         }
-
+        
         .radex-form-panel h3 {
           font-family: var(--font-heading), sans-serif;
           font-size: 22px;
           font-weight: 800;
           margin: 0 0 24px 0;
-          color: #ffffff;
+          color: var(--navy);
         }
-
+        
         .radex-form-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 16px;
           margin-bottom: 16px;
         }
-
+        
         @media (max-width: 575px) {
           .radex-form-grid {
             grid-template-columns: 1fr;
           }
         }
-
+        
         .radex-form-field {
           display: flex;
           flex-direction: column;
           gap: 6px;
         }
-
+        
         .radex-form-field label {
           font-size: 12px;
           font-weight: 600;
-          color: #9ca3af;
+          color: var(--text-light);
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
-
+        
         .radex-input {
-          background-color: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          color: #ffffff;
+          background-color: var(--bg-light);
+          border: 1px solid var(--border);
+          color: var(--text);
           padding: 12px 16px;
           border-radius: 4px;
           font-size: 15px;
           transition: border-color 0.2s, box-shadow 0.2s;
         }
-
+        
         .radex-input:focus {
           outline: none;
           border-color: var(--gold);
           box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.25);
         }
-
+        
         .radex-form-field-full {
           display: flex;
           flex-direction: column;
           gap: 6px;
           margin-bottom: 20px;
         }
-
+        
         .radex-form-field-full label {
           font-size: 12px;
           font-weight: 600;
-          color: #9ca3af;
+          color: var(--text-light);
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
-
+        
         .radex-textarea {
-          background-color: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          color: #ffffff;
+          background-color: var(--bg-light);
+          border: 1px solid var(--border);
+          color: var(--text);
           padding: 12px 16px;
           border-radius: 4px;
           font-size: 15px;
@@ -715,44 +834,44 @@ export default function EinsatzgebieteHub2() {
           font-family: inherit;
           transition: border-color 0.2s, box-shadow 0.2s;
         }
-
+        
         .radex-textarea:focus {
           outline: none;
           border-color: var(--gold);
           box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.25);
         }
-
+        
         .radex-checkbox-field {
           display: flex;
           align-items: flex-start;
           gap: 10px;
           margin-bottom: 24px;
         }
-
+        
         .radex-checkbox {
           accent-color: var(--gold);
           margin-top: 3px;
           cursor: pointer;
         }
-
+        
         .radex-checkbox-label {
           font-size: 13px;
-          color: #9ca3af;
+          color: var(--text-light);
           line-height: 1.4;
           cursor: pointer;
         }
-
+        
         .radex-checkbox-label a {
           color: var(--gold);
           text-decoration: underline;
         }
-
+        
         .error-message {
           color: #ef4444;
           font-size: 12px;
           margin-top: 2px;
         }
-
+        
         .success-box {
           text-align: center;
           padding: 40px 20px;
@@ -760,7 +879,7 @@ export default function EinsatzgebieteHub2() {
           flex-direction: column;
           align-items: center;
         }
-
+        
         .success-icon-container {
           background-color: rgba(249, 115, 22, 0.1);
           color: var(--gold);
@@ -773,17 +892,17 @@ export default function EinsatzgebieteHub2() {
           margin-bottom: 24px;
           border: 1px solid rgba(249, 115, 22, 0.25);
         }
-
+        
         .success-box h4 {
           font-size: 20px;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--navy);
           margin: 0 0 10px 0;
         }
-
+        
         .success-box p {
           font-size: 15px;
-          color: #9ca3af;
+          color: var(--text-light);
           margin: 0;
           line-height: 1.6;
         }
@@ -799,7 +918,7 @@ export default function EinsatzgebieteHub2() {
                     </p>
                     <div className="radex-hero-ctas">
                         <a href="#kontakt-formular" className="btn-gold">Beratung anfragen</a>
-                        <a href="tel:+496074960620" className="btn-outline-white">
+                        <a href="tel:+496074960620" className="btn-outline-navy">
                             <Phone size={18} /> 06074 960620
                         </a>
                     </div>
@@ -838,6 +957,66 @@ export default function EinsatzgebieteHub2() {
                 <div className="radex-map-col">
                     <div className="radex-map-container-outer">
                         <div id="einsatz-map"></div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 2.5 EMERGENCY ASSISTANCE & EXPRESS SERVICE SECTION */}
+            <section className="radex-emergency-section">
+                <div className="radex-emergency-inner">
+                    <div className="radex-emergency-header">
+                        <span className="radex-section-label">Schnelle Hilfe & Express-Service</span>
+                        <h2>Notfallhilfe & Sofortmaßnahmen</h2>
+                        <p>
+                            Wenn es schnell gehen muss: Sofortmaßnahmen bei Schäden, Express-Modernisierungen und dringende Erstbewertungen direkt in Ihrer Region.
+                        </p>
+                    </div>
+                    
+                    <div className="radex-emergency-grid">
+                        {/* 1. Emergency Bathroom Services */}
+                        <div className="emergency-card">
+                            <div className="emergency-icon-box">
+                                <span className="emergency-badge">24/7 Notdienst</span>
+                                <Wrench size={32} />
+                            </div>
+                            <h3>Notfall-Sanitärservice</h3>
+                            <p>
+                                Schnelle Hilfe bei Wasserschäden, Rohrbrüchen oder dringenden Sanitärproblemen. Wir sind in Kürze bei Ihnen vor Ort.
+                            </p>
+                            <a href="tel:+496074960620" className="btn-gold emergency-link">
+                                Jetzt anrufen &rarr;
+                            </a>
+                        </div>
+                        
+                        {/* 2. Express Renovation */}
+                        <div className="emergency-card">
+                            <div className="emergency-icon-box">
+                                <span className="emergency-badge bg-orange">Express</span>
+                                <Clock size={32} />
+                            </div>
+                            <h3>Express-Renovierung</h3>
+                            <p>
+                                Schnelle Projektabwicklung für dringende Modernisierungen mit kurzer Vorlaufzeit. Perfekt für dringende Vorhaben.
+                            </p>
+                            <a href="#kontakt-formular" className="btn-outline-navy emergency-link">
+                                Termin anfragen &rarr;
+                            </a>
+                        </div>
+                        
+                        {/* 3. Contaminant Emergency Assessment */}
+                        <div className="emergency-card">
+                            <div className="emergency-icon-box">
+                                <span className="emergency-badge bg-red">Schadstoffe</span>
+                                <AlertTriangle size={32} />
+                            </div>
+                            <h3>Schadstoff-Notfallbewertung</h3>
+                            <p>
+                                Schnelle Erstbewertung bei akutem Schimmelpilzbefall oder Verdacht auf Asbest in Bestandsgebäuden.
+                            </p>
+                            <a href="#kontakt-formular" className="btn-outline-navy emergency-link">
+                                Bewertung anfordern &rarr;
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
